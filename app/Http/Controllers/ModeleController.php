@@ -111,4 +111,29 @@ class ModeleController extends Controller
   
         return redirect()->route('modeles')->with('success', 'Modele supprimé avec succès');
     }
+
+        // public function enregistrer(Request $request)
+        // {
+        //     // Validation des données du formulaire
+        // $request->validate([
+        //     'name' => 'required|string',
+        //     'description' => 'required|string',
+        //     // Ajoutez ici les règles de validation pour chaque champ du formulaire
+        // ]);
+
+        // // Création d'une nouvelle instance de Modele avec les données du formulaire
+        // $modele = new Modele();
+        // $modele->name = $request->input('name');
+        // $modele->description = $request->input('description');
+        // // Assurez-vous d'ajuster les attributs et les noms de champs en fonction de votre modèle
+
+        // // Enregistrement du modèle
+        // $modele->save();
+
+        // // Redirection vers une page de confirmation ou autre
+        // return redirect()->route('modeles.show', ['id' => $modele->id])->with('success', 'Modèle enregistré avec succès !');
+    //}
+
+    
 }
+

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Tableau de bord</title>
+  <title>AFRO COUTURE - MKD</title>
   <!-- Custom fonts for this template-->
   <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -15,53 +15,52 @@
   <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 <body id="page-top">
-  <!-- Page Wrapper -->
+  <!-- Enveloppe de page -->
   <div id="wrapper">
   
     <!-- Barre latérale -->
     @include('layouts.sidebar')
     
   
-    <!-- Content Wrapper -->
+    <!-- Enveloppe de contenu -->
     <div id="content-wrapper" class="d-flex flex-column">
   
-      <!-- Main Content -->
+      <!-- Contenu principal -->
       <div id="content">
   
         <!-- Barre supérieure -->
         @include('layouts.navbar')
         
   
-        <!-- Begin Page Content -->
+        <!-- Début du contenu de la page -->
         <div class="container-fluid">
   
-          <!-- Page Heading -->
+          <!-- En-tête de page -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
           </div>
   
           @yield('contents')
   
-          <!-- Content Row -->
+          <!-- Ligne de contenu -->
   
   
         </div>
-        <!-- /.container-fluid -->
   
       </div>
-      <!-- End of Main Content -->
+      <!-- Fin du contenu principal -->
   
-      <!-- Footer -->
+      <!-- Pied de page -->
       @include('layouts.footer')
-      <!-- End of Footer -->
+      <!-- Fin du Pied de page -->
   
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- Fin Enveloppe de page -->
   
   </div>
-  <!-- End of Page Wrapper -->
+  <!-- Fin -->
   
-  <!-- Scroll to Top Button-->
+  <!-- Faire défiler jusqu’au bouton supérieur -->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>

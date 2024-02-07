@@ -21,7 +21,8 @@
         <!-- Nested Row within Card Body -->
         <div class="row">
           <div class="col-lg-6 d-none d-lg-block">
-            <img src="{{ asset('https://www.pagesjaunes.fr/media/agc/31/1e/96/00/00/47/37/9b/53/eb/6114311e96000047379b53eb/6114311e96000047379b53ec.jpg') }}" alt="Votre Image" class="img-fluid" width="440px">
+            <img src="{{ asset("admin_assets/img/Afr.png") }}" alt="Votre Image" class="img-fluid" width="1000px">
+            {{-- <div class="col-lg-6 d-none d-lg-block" style="background-image: url('{{ asset("admin_assets/img/Afr.png") }}'); background-size: contain; background-repeat: no-repeat; background-position: center center; max-height: 1000px;"></div> --}}
           </div>
           <div class="col-lg-6">
             <div class="p-5">
@@ -59,6 +60,18 @@
                   </div>
                 <button type="submit" class="btn btn-primary btn-user btn-block">S'inscrire</button>
               </form>
+              <hr>
+              <div class="social-auth-links text-center mb-3">
+                <p>- OR -</p>
+                <hr>
+                <a href="#" class="btn btn-block btn-primary">
+                  <i class="fab fa-facebook mr-2"></i> S'inscrire a l'aide de Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-danger">
+                  <i class="fab fa-google-plus mr-2"></i> S'inscrire a l'aide Google+
+                </a>
+              </div>
+
               <hr>
               <div class="text-center">
                 <a class="small" href="{{ route('login') }}">Vous avez déjà un compte ? Connectez-vous!</a>

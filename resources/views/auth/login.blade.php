@@ -23,12 +23,13 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-6 d-none d-lg-block" style="background-image: url('{{ asset('https://www.pagesjaunes.fr/media/agc/31/1e/96/00/00/47/37/9b/53/eb/6114311e96000047379b53eb/6114311e96000047379b53ec.jpg') }}'); background-size: contain; background-repeat: no-repeat; background-position: center center; max-height: 400px;"></div>
+                {{-- <div class="col-lg-6 d-none d-lg-block" style="background-image: url('{{ asset('https://www.pagesjaunes.fr/media/agc/31/1e/96/00/00/47/37/9b/53/eb/6114311e96000047379b53eb/6114311e96000047379b53ec.jpg') }}'); background-size: contain; background-repeat: no-repeat; background-position: center center; max-height: 400px;"></div> --}}
+                <div class="col-lg-6 d-none d-lg-block" style="background-image: url('{{ asset("admin_assets/img/Afr.png") }}'); background-size: contain; background-repeat: no-repeat; background-position: center center; max-height: 1000px;"></div>
               {{-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> --}}
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Bienvenue !</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Se connecter</h1>
                   </div>
                   <form action="{{ route('login.action') }}" method="POST" class="user">
                     @csrf
@@ -56,6 +57,18 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block btn-user">Connexion</button>
                   </form>
+                  <hr>
+                  <div class="social-auth-links text-center mb-3">
+                    <p>- OR -</p>
+                    <hr>
+                    <a href="#" class="btn btn-block btn-primary">
+                      <i class="fab fa-facebook mr-2"></i> Se connecter avec Facebook
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                      <i class="fab fa-google-plus mr-2"></i> Se connecter avec Google+
+                    </a>
+                  </div>
+
                   <hr>
                   <div class="text-center">
                     <a class="small" href="{{ route('register') }}">Créez un compte !</a>

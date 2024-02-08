@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModeleController;
+use App\Http\Controllers\AuthClientController;
  
 Route::get('/', function () {
     return view('welcome');
@@ -35,6 +36,14 @@ Route::controller(AuthController::class)->group(function () {
         Route::put('edit/{id}', 'update')->name('modeles.update');
         Route::delete('destroy/{id}', 'destroy')->name('modeles.destroy');
     });
+    Route::get('/login_client', [AuthClientController::class, 'showLoginForm'])->name('login_client');
+    Route::post('/login-client', [AuthClientController::class, 'login'])->name('login_client.submit');
+    Route::get('/register_client', [AuthClientController::class, 'showRegistrationForm'])->name('register_client');
+    Route::post('/register-client', [AuthClientController::class, 'register'])->name('register_client.submit');
+
+
+    Route::get('/home', 'HomeController@index')->name('home')->middleware('authClient');
+
  
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
 });

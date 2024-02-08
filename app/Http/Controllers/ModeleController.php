@@ -64,7 +64,7 @@ class ModeleController extends Controller
             'user_id' => Auth::user()->id,
         ]);
  
-        return back()->with('success', 'Congratulations, your product has been successfully created. Wait until your product is sold');
+        return back()->with('success', 'Ajout modele reussi !');
     }
   
     /**

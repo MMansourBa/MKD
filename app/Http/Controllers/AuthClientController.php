@@ -2,71 +2,89 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Client;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class AuthClientController extends Controller
 {
-    public function showLoginForm()
+    public function index()
     {
-        return view('authClient.login_client');
+        return view('home');
     }
-
-    public function login(Request $request)
+    public function apropos()
     {
-        Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ])->validate();
+        return view('a-propos');
 
-        if (!Auth::guard('client')->attempt($request->only('email', 'password'), $request->boolean('remember'))) {
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed')
-            ]);
+    }
+    //afficher le formulaire connexion
+    public function visiteurConnexion()
+    {
+        return view('visiteurConnexion');
+    }
+    //traitement de formulaire de connexion
+    public function visiteurConnexion_post(Request $request)
+    {
+    //    $auth = $request->validate([
+    //     'email'=>'required',
+    //     'password'=>'required',
+    //    ]);
+    //    if(Client::attempt($auth)){
+    //         $request->session()->regenerate();
+
+    //         return redirect()->intended('dashboard');
+    //    }else{
+    //     return redirect()->route('visiteurConnexion');
+    //    }
+        $credentials = $request->only('email', 'password');
+
+        // Votre logique d'authentification personnalisée avec le modèle Client
+        if (Auth::guard('client')->attempt($credentials)) {
+            // Authentification réussie
+            return redirect()->intended('/home');
+        } else {
+            // Authentification échouée
+            return redirect()->route('visiteurConnexion')->with('error', 'Adresse email ou mot de passe incorrect.');
         }
 
-        $request->session()->regenerate();
-
-        // Rediriger l'utilisateur après la connexion réussie
-        return redirect()->intended('/home');
     }
-
-    public function showRegistrationForm()
+    //afficher le formulaire d'inscription
+    public function visiteurInscription()
     {
-        return view('authClient.register_client');
+        return view('visiteurInscription');
     }
-
-    public function register(Request $request)
+    //traitement du formulaire d'inscription
+    public function visiteurInscription_post(Request $request)
     {
-        Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email|unique:clients', // Vérifier l'unicité dans la table clients
-            'password' => 'required|confirmed'
-        ])->validate();
+       $request->validate([
+             'email'=>'required|email|unique:clients',
+             'nom'=>'required',
+             'prenom'=>'required',
+             'password'=>'required',
+       ]);
+       $user = new Client();
+       $user ->email = $request->email;
+       $user ->nom = $request->nom;
+       $user ->prenom = $request->prenom;
+       $user ->password = Hash ::make($request->password) ;
+       $user-> save();
+       return redirect()->route('visiteurInscription')->with('status','Votre inscription a ete bien prise en compte.');
 
-        Client::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        // Rediriger l'utilisateur après l'inscription réussie
-        return redirect()->route('client.login_client')->with('success', 'Votre compte a été créé avec succès. Veuillez vous connecter.');
     }
 
-    public function logout(Request $request)
+    public function admin()
     {
-        Auth::guard('client')->logout();
-
-        $request->session()->invalidate();
-
-        // Rediriger l'utilisateur après la déconnexion
-        return redirect()->route('client.login_client');
+        return view('auth/login');
     }
-
-    // Autres méthodes comme la réinitialisation de mot de passe, la modification de profil, etc., peuvent être ajoutées ici.
+    //fonction pour afficher le dashboard
+    public function dashboard(){
+       return view('dashboard');
+    }
+    //fonction de deconnexion
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('visiteurConnexion');
+     }
 }
